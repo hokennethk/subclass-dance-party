@@ -3,7 +3,9 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  /*background-color:#444;*/
+  background: url('http://p1.pichost.me/i/41/1643166.jpg') no-repeat center center;
+  background-size: cover;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -21,14 +23,18 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
+  border:50px solid red;
+  border-radius:50px;
   position:absolute;
+  /*-webkit-transition: top 1s, left 1s, transform: 1s;*/
+  transition: top 1s, left 1s, transform 1s;
+  /*z-index: -1;*/
 }
 
 .static-dancer {
   display: block;
   position: absolute;
+  border: 0;
   border-radius: 0;
   height:200px;
   width:200px;
@@ -39,6 +45,7 @@ body, a:link, a:visited, a:active{
 .static-dancer-flipped {
   display: block;
   position: absolute;
+  border: 0;
   border-radius: 0;
   height:200px;
   width:200px;
@@ -53,24 +60,18 @@ body, a:link, a:visited, a:active{
     width: 200px;
     height: 200px;
     background: url('http://liquidcarbon.jamonproductions.com/forumpix/stormtrooper.gif') no-repeat center center;
-    -webkit-animation-name: spin;
-    -webkit-animation-duration: 4000ms;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    -moz-animation-name: spin;
-    -moz-animation-duration: 4000ms;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-timing-function: linear;
-    -ms-animation-name: spin;
-    -ms-animation-duration: 4000ms;
-    -ms-animation-iteration-count: infinite;
-    -ms-animation-timing-function: linear;
-    
-    animation-name: spin;
-    animation-duration: 4000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+
+    -webkit-animation: spin 4s linear infinite;
+    -moz-animation: spin 4s linear infinite;
+    -ms-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
 }
+
+.scale {
+  transform: scale(2,2);
+}
+
+
 @-ms-keyframes spin {
     from { -ms-transform: rotate(0deg); }
     to { -ms-transform: rotate(360deg); }

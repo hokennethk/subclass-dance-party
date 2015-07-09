@@ -6,8 +6,11 @@ var Dancer = function(top, left, timeBetweenSteps){
   this.$node = $('<div class="dancer"></div>');
   this.timeBetweenSteps = timeBetweenSteps;
   this.step();
-  this.currentPosition = window.currentPosition;
+  this.spot = window.currentPosition;
   window.currentPosition++;
+
+  // push to global dancers
+  window.dancers.push(this);
   
 
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
@@ -33,13 +36,21 @@ Dancer.prototype.setPosition = function(top, left) {
 };
 
 Dancer.prototype.lineUp = function(){
-  //get dancers array length
-  //calculate spacing between dancers
-  // two variables;
-  //top and Left
-    //top = bodyheight * .50
-    //left = bodywidth/# of dancers
-    //currentPosition += bodywith/# of dancers
+  var spacing = $('body').width() / window.dancers.length;
+  this.setPosition($('body').height() / 2, this.spot * spacing);
+
+};
+
+Dancer.prototype.tangoPartner = function(partner) {
+  var top = this.$node.css('top');
+  var left = this.$node.css('left');
+  var partTop = partner.$node.css('top');
+  var partLeft = partner.$node.css('left');
+
+  this.$node.css('top', partTop);
+  this.$node.css('left', partLeft);
+  partner.$node.css('top', top);
+  partner.$node.css('left', left);
 };
 
 

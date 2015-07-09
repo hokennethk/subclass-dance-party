@@ -1,6 +1,6 @@
 $(document).ready(function(){
   window.dancers = [];
-  window.currentPosition = 1;
+  window.currentPosition = 0;
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
@@ -62,5 +62,24 @@ $(document).ready(function(){
     );
     $('body').append(dancer.$node);
   });
+
+  $(".lineUpButton").on("click", function(event){
+    window.dancers.forEach(function(dancer) {
+      dancer.lineUp();
+    });
+  });
+
+  $(".tangoButton").on("click", function(event){
+    for (var i=0; i < window.dancers.length; i = i + 2) {
+      window.dancers[i].tangoPartner(window.dancers[i+1]);
+    }
+  });
+
+  $("body").on("mouseover", ".dancer", function() {
+    $(this).addClass("scale");
+  }).on("mouseleave", ".dancer", function() {
+    $(this).removeClass("scale");
+  });
+
 });
 
